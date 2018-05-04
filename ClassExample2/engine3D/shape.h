@@ -4,14 +4,18 @@
 #include "lineMesh.h"
 #include "texture.h"
 #include <list>
+#include "kdtree.h"
 
 class Shape : public MovableGLM
 {
-	Mesh *mesh;
 	LineMesh *lineMesh;
 	Texture *tex;
 	bool isCopy;
 public:
+	Mesh *mesh;
+	Mesh *surrounding_box;
+	Mesh *collision_box;
+
 	enum{triangles,lines};
 	Shape(const Shape& shape);
 	Shape(const std::string& fileName);
@@ -25,7 +29,13 @@ public:
 	void addMesh(Vertex* vertices, unsigned int numVertices,unsigned int* indices, unsigned int numIndices);
 	void addLineMesh(LineVertex* vertices, unsigned int numVertices,unsigned int* indices, unsigned int numIndices);
 	void draw(int mode);
-	void getPoints(std::list<glm::vec3> &pList);
 	virtual ~Shape(void);
+
+	bool collides_with(Shape* other);
+private:
+	bool nodes_collide(Node* a, Node* b, const glm::vec3 &translate_a, const glm::vec3 &translate_b) const;
+	static void push_child_nodes(std::pair<Node*, Node*> p, std::vector<std::pair<Node*, Node*>> &to_check);
+	void set_collision_box(Node* n);
+	static Mesh* create_box(Node* n, glm::vec3 color);
 };
 

@@ -1,16 +1,12 @@
 #define GLEW_STATIC
 #include "mesh.h"
 #include <GL/glew.h>
-#include <map>
-#include <algorithm>
-#include <fstream>
-#include <iostream>
-#include <stdlib.h>
 
 Mesh::Mesh(const std::string& fileName)
 {
 	IndexedModel model;
 	OBJModel(fileName).ToIndexedModel(model);
+	tree.make_tree(model);
 	InitMesh(model);
 }
 
@@ -18,6 +14,7 @@ Mesh::Mesh(const std::string& fileName, const unsigned maxFaces)
 {
 	IndexedModel model;
 	OBJModel(fileName, maxFaces).ToIndexedModel(model);
+	tree.make_tree(model);
 	InitMesh(model);
 }
 
@@ -83,8 +80,6 @@ Mesh::~Mesh()
 void Mesh::Draw(int mode)
 {
 	glBindVertexArray(m_vertexArrayObject);
-
-	//glDrawElements(GL_LINES, m_numIndices, GL_UNSIGNED_INT, 0);
 
 	glDrawElementsBaseVertex(mode, m_numIndices, GL_UNSIGNED_INT, 0, 0);
 	glBindVertexArray(0);

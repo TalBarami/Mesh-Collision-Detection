@@ -16,51 +16,61 @@ float factor = 1.0;
 double x1 = 0, x2=0;
 double ys1 = 0, y2 = 0;
 float depth;
+float velocity = 0.01f;
+float rotation = 10.0f;
+float movement = 1.0f;
 	
-	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (action == GLFW_PRESS || action == GLFW_REPEAT)
 	{
-		if(action == GLFW_PRESS || action == GLFW_REPEAT)
+		switch (key)
 		{
-			switch (key)
-			{
-				case GLFW_KEY_ESCAPE:
-			    case GLFW_KEY_Q:
-			    
-					glfwSetWindowShouldClose(window,GLFW_TRUE);
-				break;
-				case GLFW_KEY_RIGHT:
-				scn.cameras[0]->MoveRight(1.0f);
-					break;
-				case GLFW_KEY_LEFT:
-					scn.cameras[0]->MoveRight(-1.0f);
+		case GLFW_KEY_ESCAPE:
+			glfwSetWindowShouldClose(window, GLFW_TRUE);
+			break;
+		case GLFW_KEY_RIGHT:
+			scn.shapes[0]->add_velocity(glm::vec3(-velocity, 0, 0));
+			break;
+		case GLFW_KEY_LEFT:
+			scn.shapes[0]->add_velocity(glm::vec3(velocity, 0, 0));
+			break;
+		case GLFW_KEY_UP:
+			scn.shapes[0]->add_velocity(glm::vec3(0, velocity, 0));
+			break;
+		case GLFW_KEY_DOWN:
+			scn.shapes[0]->add_velocity(glm::vec3(0, -velocity, 0));
+			break;
+		case GLFW_KEY_Q:
+			scn.cameras[0]->MoveForward(-1.0f);
+			break;
+		case GLFW_KEY_E:
+			scn.cameras[0]->MoveForward(1.0f);
+			break;
+		case GLFW_KEY_D:
+			scn.cameras[0]->RotateY(-rotation);
+			break;
+		case GLFW_KEY_A:
+			scn.cameras[0]->RotateY(rotation);
+			break;
+		case GLFW_KEY_S:
+			scn.cameras[0]->Pitch(rotation);
+			break;
+		case GLFW_KEY_W:
+			scn.cameras[0]->Pitch(-rotation);
+			break;
+		case GLFW_KEY_Z:
+			scn.cameras[0]->MoveRight(movement);
+			break;
+		case GLFW_KEY_X:
+			scn.cameras[0]->MoveRight(-movement);
+			break;
 
-					break;
-				case GLFW_KEY_UP:
-					scn.cameras[0]->MoveForward(1.0f);
-
-					break;
-				case GLFW_KEY_DOWN:
-					scn.cameras[0]->MoveForward(-1.0f);
-
-					break;
-				case GLFW_KEY_D:
-				scn.cameras[0]->RotateY(-0.5);
-				break;
-				case GLFW_KEY_A:
-				scn.cameras[0]->RotateY(0.5);
-				break;
-				case GLFW_KEY_S:
-				scn.cameras[0]->Pitch(0.5);
-				break;
-				case GLFW_KEY_W:
-				scn.cameras[0]->Pitch(-0.5);
-				break;
-			
-			default:
-				break;
-			}
+		default:
+			break;
 		}
 	}
+}
 	
 	void updatePosition(double xpos, double ypos)
 	{

@@ -9,8 +9,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "engine3D", "engine3D\engine
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "display", "display\display.vcxproj", "{2785AA83-C879-44C2-8189-158A8AF2525F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glmKDTree", "glmKDTree\glmKDTree.vcxproj", "{430AB324-43C6-4EF3-B371-B9C0D9F34D91}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -29,10 +27,6 @@ Global
 		{2785AA83-C879-44C2-8189-158A8AF2525F}.Debug|Win32.Build.0 = Debug|Win32
 		{2785AA83-C879-44C2-8189-158A8AF2525F}.Release|Win32.ActiveCfg = Release|Win32
 		{2785AA83-C879-44C2-8189-158A8AF2525F}.Release|Win32.Build.0 = Release|Win32
-		{430AB324-43C6-4EF3-B371-B9C0D9F34D91}.Debug|Win32.ActiveCfg = Debug|Win32
-		{430AB324-43C6-4EF3-B371-B9C0D9F34D91}.Debug|Win32.Build.0 = Debug|Win32
-		{430AB324-43C6-4EF3-B371-B9C0D9F34D91}.Release|Win32.ActiveCfg = Release|Win32
-		{430AB324-43C6-4EF3-B371-B9C0D9F34D91}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

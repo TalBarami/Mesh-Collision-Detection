@@ -89,6 +89,21 @@ void MovableGLM::translateInSystem(const MovableGLM  &system,const vec3 &vec, in
 	translateMat[indx] = translate(translateMat[indx], tmp);	
 }
 
+void MovableGLM::update()
+{
+	myTranslate(v, 0);
+}
+
+void MovableGLM::set_velocity(glm::vec3 v)
+{
+	this->v = v;
+}
+
+void MovableGLM::add_velocity(glm::vec3 v)
+{
+	this->v += v;
+}
+
 void MovableGLM::changeCenterOfRotation(const vec3 & Pvec)
 {
 	myTranslate(Pvec, 0 );
@@ -102,7 +117,7 @@ void MovableGLM::clearTrans()
 	rotateMat = mat4(1);
 }
 
-vec4 MovableGLM::getTraslate(const vec4 & vec)
+vec4 MovableGLM::getTraslate()
 {
 	mat4 mat = makeTrans();
 	return mat[3];

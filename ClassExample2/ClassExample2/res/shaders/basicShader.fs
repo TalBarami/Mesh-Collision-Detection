@@ -11,6 +11,6 @@ uniform vec3 lightColor;
 void main()
 {
     // vec3 tmp =  color0 ;
-    vec3 tmp = dot(-lightDirection, normal0) * color0;
+    vec3 tmp = /*dot(-lightDirection, normal0) * */ color0;
 	gl_FragColor =  clamp(vec4(tmp,1.0), 0.0, 1.0);
 }

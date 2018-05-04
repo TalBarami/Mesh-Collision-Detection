@@ -9,7 +9,7 @@ private:
 	glm::mat4 rotateMat;
 	glm::vec3 scaleFactor;
 	glm::vec3 findAxis(glm::vec3 vec) const;
-
+	glm::vec3 v;
 public:
 	MovableGLM();
 	virtual ~MovableGLM(){}
@@ -26,8 +26,11 @@ public:
 	void clearTrans();
 	void copyTranslations(MovableGLM *mGLM);
 	void translateInSystem(const MovableGLM  &system,const glm::vec3 &vec, int indx, bool toScale);
+	void update();
+	void set_velocity(glm::vec3 v);
+	void add_velocity(glm::vec3 v);
 
-	glm::vec4 getTraslate(const glm::vec4 &vec);
+	glm::vec4 getTraslate();
 	glm::vec3 getPointInSystem(const glm::mat4 &prevTransformations,const glm::vec3 &point);
 	glm::vec3 getVectorInSystem(const glm::mat4 &prevTransformations,const glm::vec3 &vec);
 	glm::mat4 getCenterOfRotation(const glm::mat4 &prevTransformations,bool addRotation);

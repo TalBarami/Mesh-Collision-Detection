@@ -66,6 +66,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="kdtree.cpp" />
     <ClCompile Include="lineMesh.cpp" />
     <ClCompile Include="mesh.cpp" />
     <ClCompile Include="MovableGLM.cpp" />
@@ -79,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
+    <ClInclude Include="kdtree.h" />
     <ClInclude Include="lineMesh.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="MovableGLM.h" />

@@ -53,8 +53,8 @@ int main(int argc, char ** argv)
 	}
 	
 	Kdtree kd;
-	kd.makeTree(point_list);
-	kd.printTree(kd.getRoot());
+	kd.make_tree(point_list);
+	kd.print_tree(kd.getRoot());
  	
 	std::cout<<"\n\n";
 	getchar();

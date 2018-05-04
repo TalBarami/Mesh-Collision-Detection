@@ -5,9 +5,6 @@
 
 using namespace std;
 
-
-
-
 Scene::Scene()
 {
 	cameras.push_back(new Camera(glm::vec3(0,0,-15.0f),60.0f,1.0f,0.1f,100.0f));
@@ -112,7 +109,7 @@ Scene::Scene(glm::vec3 position,float angle,float hwRelation,float near, float f
 		}
 	}
 
-	void Scene::shapeTransformation(int type,float amt)
+void Scene::shapeTransformation(int type,float amt)
 	{
 		    switch (type)
 			{

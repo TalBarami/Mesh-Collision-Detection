@@ -2,6 +2,7 @@
 #define MESH_INCLUDED_H
 
 #include "obj_loader.h"
+#include "kdtree.h"
 
 struct Vertex
 {
@@ -32,6 +33,8 @@ private:
 class Mesh
 {
 public:
+	IndexedModel model;
+	Kdtree tree;
 	
     Mesh(const std::string& fileName);
 	Mesh(const std::string & fileName, const unsigned maxFaces);
@@ -50,15 +53,12 @@ private:
 	INDEX_VB,
 	COLOR_VB
 	};
-	
 
-	 IndexedModel model;
-	
 	static const unsigned int NUM_BUFFERS = 5;
 	void operator=(const Mesh& mesh) {}
 	Mesh(const Mesh& mesh) {}
-	
-    void InitMesh(const IndexedModel& model);
+
+	void InitMesh(const IndexedModel& model);
 
 	unsigned int m_vertexArrayObject;
 	unsigned int m_vertexArrayBuffers[NUM_BUFFERS];
